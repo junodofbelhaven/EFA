@@ -1,5 +1,8 @@
 Welcome to EFA, a Unity-based 5v5 bomb-planting first-person shooter! EFA offers a tactical gaming experience in a vibrant, low-poly environment. Players can choose between two teams: attackers aiming to plant the bomb, and defenders striving to prevent it. Engage in fast-paced, strategic gameplay that emphasizes teamwork, skill, and quick decision-making.
 
+![Alt text]([images/example.png](https://cdn.discordapp.com/attachments/1277879326972313602/1280122386108387359/image.png?ex=66d99160&is=66d83fe0&hm=c78913ae683af40224211e0cf5ff1433c97e3e9349525c9dcb118ceffc6a5f85&))
+
+
 Features
 Team-Based Gameplay: Intense 5v5 matches that require coordination and strategy.
 Bomb-Planting Mechanics: Attackers must plant the bomb at designated sites, while defenders must defuse it or eliminate all attackers.
