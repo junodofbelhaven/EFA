@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 public class PlayerMovemement : MonoBehaviour
 {
 
@@ -35,6 +36,8 @@ public class PlayerMovemement : MonoBehaviour
     private Renderer renderer;
     private Transform orientation;
 
+    PhotonView view;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -42,6 +45,8 @@ public class PlayerMovemement : MonoBehaviour
 
         renderer = transform.Find("Capsule").GetComponent<Renderer>();
         playerHeight = renderer.bounds.size.y;
+
+        view = GetComponent<PhotonView>();
 
     }
 
@@ -83,39 +88,45 @@ public class PlayerMovemement : MonoBehaviour
 
     private void GetInput()
     {
-        if (groundedPlayer || allowMidAirMovement) //zýpladýðýnda veya havadayken hareket yönünü deðiþtirmeyi engellemek için kýsýtlama.
+        if (view.IsMine)
         {
-            moveDirection = Input.GetAxis("Vertical") * orientation.forward + Input.GetAxis("Horizontal") * orientation.right;
-            moveDirection = moveDirection.normalized;
+            if (groundedPlayer || allowMidAirMovement) //zýpladýðýnda veya havadayken hareket yönünü deðiþtirmeyi engellemek için kýsýtlama.
+            {
+                moveDirection = Input.GetAxis("Vertical") * orientation.forward + Input.GetAxis("Horizontal") * orientation.right;
+                moveDirection = moveDirection.normalized;
+            }
+            isJumpingInput = Input.GetButton("Jump");
+            isSilentWalkInput = Input.GetKey(KeyCode.LeftShift);
         }
-        isJumpingInput = Input.GetButton("Jump");
-        isSilentWalkInput = Input.GetKey(KeyCode.LeftShift);
     }
 
     private void Move(float moveSpeed)
     {
-        groundedPlayer = controller.isGrounded;
-
-        if (groundedPlayer && playerVelocity.y < 0)
+        if (view.IsMine)
         {
-            playerVelocity.y = 0f;
+            groundedPlayer = controller.isGrounded;
+
+            if (groundedPlayer && playerVelocity.y < 0)
+            {
+                playerVelocity.y = 0f;
+            }
+
+            if (groundedPlayer)
+            {
+                moveDirection = Input.GetAxis("Vertical") * orientation.forward + Input.GetAxis("Horizontal") * orientation.right;
+                moveDirection = moveDirection.normalized;
+            }
+
+            if (isJumpingInput && groundedPlayer)
+            {
+                playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+            }
+
+            playerVelocity.y += gravityValue * Time.fixedDeltaTime;
+
+            controller.Move(moveDirection * moveSpeed * Time.fixedDeltaTime);
+            controller.Move(playerVelocity * Time.fixedDeltaTime);
         }
-
-        if (groundedPlayer)
-        {
-            moveDirection = Input.GetAxis("Vertical") * orientation.forward + Input.GetAxis("Horizontal") * orientation.right;
-            moveDirection = moveDirection.normalized;
-        }
-
-        if (isJumpingInput && groundedPlayer)
-        {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        }
-
-        playerVelocity.y += gravityValue * Time.fixedDeltaTime;
-
-        controller.Move(moveDirection * moveSpeed * Time.fixedDeltaTime);
-        controller.Move(playerVelocity * Time.fixedDeltaTime);
     }
     #endregion
 
