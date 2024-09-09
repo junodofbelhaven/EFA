@@ -1,9 +1,10 @@
 //using UnityEngine;
+//using Photon.Pun;
 //using ExitGames.Client.Photon;
 //using UnityEngine.UI;
 //using System.Collections.Generic;
-//using Photon.Pun;
-//using Photon.Realtime;
+
+
 //public enum Team
 //{
 //    Red,
