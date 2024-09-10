@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7154f796e2619074d91d1420a4e57f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 8557800711398523587, guid: 5f6cdc9d972f993489f0400851ccc4af, type: 3}
+  playerPrefab: {fileID: 484008125272141678, guid: 5f6cdc9d972f993489f0400851ccc4af, type: 3}
   redTeamSpawnPoint: {fileID: 986062392}
   blueTeamSpawnPoint: {fileID: 1403980271}
   redButton: {fileID: 1232706474}

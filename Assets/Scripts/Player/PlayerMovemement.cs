@@ -10,10 +10,10 @@ public class PlayerMovemement : MonoBehaviour
     public float walkingSpeed = 5f;
     public float silentWalkSpeed = 3.5f;
     public float crouchWalkSpeed = 2f;
-    public float jumpHeight = 1.5f;
+    public float jumpHeight = 0.8f;
     public float climbingSpeed = 1f;
     public bool allowMidAirMovement = false;
-    readonly float gravityValue = -9.81f;
+    public float gravityValue = -24;
 
 
     //player condition
