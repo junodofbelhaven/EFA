@@ -685,7 +685,7 @@ GameObject:
   m_Component:
   - component: {fileID: 986062392}
   m_Layer: 0
-  m_Name: SpawnPoint1
+  m_Name: RedTeamSP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -928,7 +928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1403980271}
   m_Layer: 0
-  m_Name: SpawnPoint2
+  m_Name: BlueTeamSP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
