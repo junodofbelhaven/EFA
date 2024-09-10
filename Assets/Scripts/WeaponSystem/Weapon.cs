@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ public class Weapon : MonoBehaviour
 
     //bullet properties
     public WeaponType weaponType;
+    PhotonView photonView;
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
     public float bulletVelocity = 30f;
@@ -44,7 +46,7 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
-
+        photonView = GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
@@ -69,6 +71,7 @@ public class Weapon : MonoBehaviour
 
     private void FireWeapon()
     {
+        if (photonView.IsMine){
         readyToShoot = false;
         Vector3 shootingDirection = CalculateDirectionAndSpread().normalized;
 
@@ -91,11 +94,12 @@ public class Weapon : MonoBehaviour
             allowReset = false;
         }
 
-        // burst mode
-        if (currentShootingMode == ShootingMode.Burst && burstBulletsLeft > 1)
-        {
-            burstBulletsLeft--;
-            Invoke("FireWeapon",shootingDelay);
+            // burst mode
+            if (currentShootingMode == ShootingMode.Burst && burstBulletsLeft > 1)
+            {
+                burstBulletsLeft--;
+                Invoke("FireWeapon", shootingDelay);
+            }
         }
 
     }
