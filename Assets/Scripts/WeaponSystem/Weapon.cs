@@ -37,7 +37,7 @@ public class Weapon : MonoBehaviour
     }
 
     public ShootingMode currentShootingMode;
-
+    //JustForTest
     private void Awake()
     {
         readyToShoot = true;
