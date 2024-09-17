@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magazineCapacity: 30
   bulletPerBurstShot: 3
-  bulletSpread: 0.5
+  bulletSpread: 0.1
   shootingDistance: 1
   isAutomatic: 1
   isBurst: 1

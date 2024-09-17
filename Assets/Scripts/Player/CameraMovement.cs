@@ -12,8 +12,8 @@ public class CameraMovement : MonoBehaviour
     public float sensY = 50f;
 
     //Stores the direction that object is facing.
-    public Transform orientation;
-    public Transform camera;
+    Transform orientation;
+    Transform camera;
 
 
     void Start()
