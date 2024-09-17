@@ -258,7 +258,6 @@ GameObject:
   - component: {fileID: 2095129294092820879}
   - component: {fileID: 5390454484168990445}
   - component: {fileID: 2665984600061903191}
-  - component: {fileID: 56089386312700755}
   m_Layer: 0
   m_Name: PlayerEnD
   m_TagString: Untagged
@@ -515,20 +514,6 @@ MonoBehaviour:
   bulletVelocity: 30
   bulletPrefabLifetime: 3
   currentShootingMode: 0
---- !u!114 &56089386312700755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3151674125631920431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f3674ed8c64ae24884e400327d0f669, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mesafe: 100
-  sikmaAraligi: 0.1
 --- !u!1 &5074111214868692598
 GameObject:
   m_ObjectHideFlags: 0
