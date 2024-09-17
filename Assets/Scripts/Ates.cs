@@ -8,17 +8,34 @@ public class Ates : MonoBehaviour
 
     public float sikmaAraligi;
 
-    bool fire;
+    bool fire = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //private float  saglik= 100;
+    //bool isAlive;
+
+
+
+    //private void Update()
+    //{
+    //    if (saglik <= 0)
+    //    {
+    //        isAlive = false;
+
+    //    }
+    //    if (isAlive == true)
+    //    {
+    //        FixedUpdate();
+    //    }
+    //}
+    //public bool IsAlive()
+    //{
+    //    return isAlive; ;
+    //}
 
     // Update is called once per frame
     void FixedUpdate()
     {
+       
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         RaycastHit hit;
 
@@ -30,6 +47,8 @@ public class Ates : MonoBehaviour
                 {
                     Debug.Log("vurdun");
                     fire = false;
+                    StartCoroutine(firetime());
+                    //saglik -= Random.RandomRange(5,10);
                 }
             }
         }

@@ -6,7 +6,7 @@ public class bullet : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("playerCatman"))
+        if (collision.gameObject.CompareTag("Target"))
         {
             Debug.Log("hit " + collision.gameObject.name + "!");
             CreateBulletImpactEffect(collision);

@@ -156,8 +156,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensX: 65
   sensY: 200
-  orientation: {fileID: 0}
-  camera: {fileID: 0}
 --- !u!114 &4156229063157179487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,7 +299,6 @@ MonoBehaviour:
   isShooting: 0
   readyToShoot: 1
   burstBulletsLeft: 3
-  spreadIntensity: 0
   weaponType: {fileID: 11400000, guid: 0b6a33bda36a6c146a5eb37731ae1940, type: 2}
   bulletPrefab: {fileID: 5060965199837592731, guid: a6bc3ccb9f2d1724bbdf745afc9883cf, type: 3}
   bulletSpawn: {fileID: 2395316624262030861}
