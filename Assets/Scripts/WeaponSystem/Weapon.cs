@@ -16,11 +16,7 @@ public class Weapon : MonoBehaviour
 
     //burst
     public int burstBulletsLeft;
-
-    //spread
-    public float spreadIntensity;
-
-
+        
     //bullet properties
     public WeaponType weaponType;
     PhotonView photonView;
@@ -82,7 +78,7 @@ public class Weapon : MonoBehaviour
         bullet.transform.forward = shootingDirection;
         
         //shoot the bullet
-        bullet.GetComponent<Rigidbody>().AddForce(bulletSpawn.forward.normalized * bulletVelocity, ForceMode.Impulse);
+        bullet.GetComponent<Rigidbody>().AddForce(shootingDirection * bulletVelocity, ForceMode.Impulse);
 
         //destroy bullet after some time
         StartCoroutine(DestroyBulletAfterTime(bullet, bulletPrefabLifetime));
@@ -103,6 +99,7 @@ public class Weapon : MonoBehaviour
         }
 
     }
+
 
     private void swapWeaponMode()
     {
@@ -133,6 +130,7 @@ public class Weapon : MonoBehaviour
 
         Vector3 direction = targetPoint - bulletSpawn.position;
 
+        
         float x = UnityEngine.Random.Range(-weaponType.BulletSpread, weaponType.BulletSpread);
         float y = UnityEngine.Random.Range(-weaponType.BulletSpread, weaponType.BulletSpread);
 
