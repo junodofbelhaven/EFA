@@ -36,7 +36,6 @@ public class bullet : MonoBehaviour
             Destroy(gameObject);  // Mermi yok ediliyor
         }
     }
-
     void CreateBulletImpactEffect(Collision objectWeHit)
     {
         ContactPoint contact = objectWeHit.contacts[0];
