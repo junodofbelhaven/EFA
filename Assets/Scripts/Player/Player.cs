@@ -15,10 +15,19 @@ public class Player : MonoBehaviour
     public int armor = 0;
 
     //economy
-    public int currentCash = 0;
+    public int currentCash = 1000;
 
     //components
     Health health;
+
+    public List<GameObject> weapons = new List<GameObject>(); // Oyuncunun silah envanteri
+
+
+    public void AddWeaponToInventory(GameObject weapon)
+    {
+        weapons.Add(weapon);
+        Debug.Log("Silah envantere eklendi: " + weapon.name);
+    }
     private void OnEnable()
     {
         health = GetComponent<Health>();

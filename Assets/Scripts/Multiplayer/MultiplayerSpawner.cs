@@ -24,6 +24,9 @@ public class MultiplayerSpawner : MonoBehaviour
     [SerializeField] private CanvasGroup myGroup;
 
     [SerializeField] private bool fadeOut = false;
+
+    public GameObject marketpanel;
+
     public void HideUI()
     {
         fadeOut = true;
@@ -42,7 +45,7 @@ public class MultiplayerSpawner : MonoBehaviour
         Fade();
         //CursorZort();
 
-        if (playerStatus)
+        if (playerStatus && marketpanel.activeSelf ==false)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;

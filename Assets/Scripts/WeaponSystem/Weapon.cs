@@ -62,7 +62,7 @@ public class Weapon : MonoBehaviour
             burstBulletsLeft = weaponType.BulletPerBurstShot;
             FireWeapon(); 
         }
-
+         
     }
 
     private void FireWeapon()
