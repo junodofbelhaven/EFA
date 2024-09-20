@@ -37,6 +37,7 @@ public class Market : MonoBehaviour
     public Button selectAK47Button; // Butonu referans al
     public GameObject playerPrefab; // Player prefab'ýnýzý buraya atayýn
     public GameObject marketPanel;
+    public GameObject ak_47;
 
 
     private GameObject playerInstance;
@@ -46,6 +47,7 @@ public class Market : MonoBehaviour
     void Start()
     {
         marketUI.SetActive(false);
+        ak_47.SetActive(false);
 
         if (selectAK47Button != null)
         {
@@ -79,6 +81,7 @@ public class Market : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;  // Mouse'u kilitle
                 Cursor.visible = false;  // Mouse imlecini gizle
             }
+           
         }
     }
 
@@ -104,6 +107,7 @@ public class Market : MonoBehaviour
     {
         // Burada karakterin envanterine veya seçili silahýna AK47 eklenir
         Debug.Log("FPS-AK47 seçildi!");
+        ak_47.SetActive(true);
         // Örnek: PlayerManager veya benzeri bir sistemle seçili silahý ekleyin
     }
 
