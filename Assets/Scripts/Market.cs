@@ -42,12 +42,19 @@ public class Market : MonoBehaviour
 
     private GameObject playerInstance;
 
+    public int playerMoney = 3000;
+    public Text moneyText;
+    public int ak47price = 2700;
+    public Text notificationText;//satýn alma bildirimi(yetersiz para vs.)
 
 
     void Start()
     {
         marketUI.SetActive(false);
         ak_47.SetActive(false);
+        notificationText.text = "";
+
+        UpdateMoneyText();
 
         if (selectAK47Button != null)
         {
@@ -106,9 +113,30 @@ public class Market : MonoBehaviour
     void OnSelectAK47Clicked()
     {
         // Burada karakterin envanterine veya seçili silahýna AK47 eklenir
-        Debug.Log("FPS-AK47 seçildi!");
-        ak_47.SetActive(true);
+        //Debug.Log("FPS-AK47 seçildi!");
+        //ak_47.SetActive(true);
         // Örnek: PlayerManager veya benzeri bir sistemle seçili silahý ekleyin
+
+        if (playerMoney >= ak47price)
+        {
+            ak_47.SetActive(true);
+            playerMoney -= ak47price;//para miktarýný dusurduk
+            UpdateMoneyText();//para miktarini guncelledik
+            notificationText.text = "FPS-AK47 satýn alýndý.";
+            Debug.Log("FPS-AK47 satýn alýndý.");
+
+        }
+        else
+        {
+            notificationText.text = "yetersiz  para miktarý ";//yetersiz para miktarý olunca
+            Debug.Log("yetersiz para miktarý. ");
+        }
+
+    }
+
+    void UpdateMoneyText()
+    {
+        moneyText.text = "Para:  $ " + playerMoney.ToString();
     }
 
     void ActivateWeapon(string weaponName)
