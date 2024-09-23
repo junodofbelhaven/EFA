@@ -47,6 +47,8 @@ public class Market : MonoBehaviour
     public int ak47price = 2700;
     public Text notificationText;//satýn alma bildirimi(yetersiz para vs.)
 
+    public bool hasWeapon; // Oyuncunun silaha sahip olup olmadigini kontrol eden degisken
+
 
     void Start()
     {
@@ -61,8 +63,8 @@ public class Market : MonoBehaviour
             selectAK47Button.onClick.AddListener(OnSelectAK47Clicked);
         }
 
-        // Player prefab'ýný sahnede bulup referans alýn
-        playerInstance = GameObject.FindWithTag("playerCatman"); // Oyuncu prefab'ýnýzý "Player" tag'i ile buluyoruz
+        // Player prefab'ini sahnede bulup referans alin
+        playerInstance = GameObject.FindWithTag("playerCatman"); 
     }
 
     void Update()
@@ -112,11 +114,6 @@ public class Market : MonoBehaviour
     }
     void OnSelectAK47Clicked()
     {
-        // Burada karakterin envanterine veya seçili silahýna AK47 eklenir
-        //Debug.Log("FPS-AK47 seçildi!");
-        //ak_47.SetActive(true);
-        // Örnek: PlayerManager veya benzeri bir sistemle seçili silahý ekleyin
-
         if (playerMoney >= ak47price)
         {
             ak_47.SetActive(true);
@@ -125,11 +122,20 @@ public class Market : MonoBehaviour
             notificationText.text = "FPS-AK47 satýn alýndý.";
             Debug.Log("FPS-AK47 satýn alýndý.");
 
+            // Weapon script'ine hasWeapon deðerini güncelle
+            Weapon weaponScript = playerPrefab.GetComponentInChildren<Weapon>();
+            if (weaponScript != null)
+            {
+                weaponScript.hasWeapon = true;
+            }
+
         }
         else
         {
             notificationText.text = "yetersiz  para miktarý ";//yetersiz para miktarý olunca
             Debug.Log("yetersiz para miktarý. ");
+
+           //hasWeapon = false;
         }
 
     }
