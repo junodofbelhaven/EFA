@@ -88,12 +88,12 @@ public class Weapon : MonoBehaviour
         //}
 
 
-        Debug.Log("hasWeapon deðeri: " + hasWeapon);  // Bu mesaj, hasWeapon'ýn doðru olup olmadýðýný kontrol eder.
+        
 
         // Eðer silah satýn alýnmadýysa, ateþ etmeyi engelle
         if (!hasWeapon)
         {
-            Debug.Log("Silah alýnmadý, ateþ edilemiyor.");
+           
             return;  // hasWeapon false ise ateþ etme
         }
 
