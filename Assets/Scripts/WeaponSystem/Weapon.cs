@@ -7,22 +7,20 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
 
-    public Camera playerCamera;
+    Camera playerCamera;
 
     //shooting
     public bool isShooting, readyToShoot;
     bool allowReset = true;
-    float shootingDelay = 0.2f;
 
     //burst
-    public int burstBulletsLeft;
+    int burstBulletsLeft;
         
     //bullet properties
     public WeaponType weaponType;
     PhotonView photonView;
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
-    public float bulletVelocity = 30f;
     public float bulletPrefabLifetime = 3f;
 
     public enum ShootingMode
@@ -38,11 +36,12 @@ public class Weapon : MonoBehaviour
     {
         readyToShoot = true;
         burstBulletsLeft = weaponType.BulletPerBurstShot;
+        playerCamera = GetComponentInParent<Camera>();
     }
 
     private void Start()
     {
-        photonView = GetComponent<PhotonView>();
+        photonView = gameObject.GetComponentInParent<PhotonView>();
     }
 
     // Update is called once per frame
@@ -78,7 +77,7 @@ public class Weapon : MonoBehaviour
         bullet.transform.forward = shootingDirection;
         
         //shoot the bullet
-        bullet.GetComponent<Rigidbody>().AddForce(shootingDirection * bulletVelocity, ForceMode.Impulse);
+        bullet.GetComponent<Rigidbody>().AddForce(shootingDirection * weaponType.BulletVelocity, ForceMode.Impulse);
 
         //destroy bullet after some time
         StartCoroutine(DestroyBulletAfterTime(bullet, bulletPrefabLifetime));
@@ -86,7 +85,7 @@ public class Weapon : MonoBehaviour
         // checking if we are done shooting
         if (allowReset)
         {
-            Invoke("ResetShot", shootingDelay);
+            Invoke("ResetShot", weaponType.ShootingDelay);
             allowReset = false;
         }
 
@@ -94,7 +93,7 @@ public class Weapon : MonoBehaviour
             if (currentShootingMode == ShootingMode.Burst && burstBulletsLeft > 1)
             {
                 burstBulletsLeft--;
-                Invoke("FireWeapon", shootingDelay);
+                Invoke("FireWeapon", weaponType.ShootingDelay);
             }
         }
 

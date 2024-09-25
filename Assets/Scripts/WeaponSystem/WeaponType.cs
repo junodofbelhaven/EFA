@@ -11,6 +11,8 @@ public class WeaponType : ScriptableObject
     [SerializeField] private int magazineCapacity;
     [SerializeField] private int bulletPerBurstShot;
     [SerializeField] private float bulletSpread;
+    [SerializeField] private float bulletVelocity;
+    [SerializeField] private float shootingDelay;
     [SerializeField] private ShootingDistanceEnum shootingDistance;
     [SerializeField] private bool isAutomatic,isBurst,isSingle;
 
@@ -21,6 +23,8 @@ public class WeaponType : ScriptableObject
     public bool IsAutomatic { get => isAutomatic; set => isAutomatic = value; }
     public bool IsBurst { get => isBurst; set => isBurst = value; }
     public bool IsSingle { get => isSingle; set => isSingle = value; }
+    public float ShootingDelay { get => shootingDelay; set => shootingDelay = value; }
+    public float BulletVelocity { get => bulletVelocity; set => bulletVelocity = value; }
 
     public enum ShootingDistanceEnum
     {

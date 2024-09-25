@@ -9,11 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c56ce795ad9d699468b8a9a8b04e02ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 89bbb2cc188e6db4a823476b4ef9f92b, type: 3}
   m_Name: AutomaticRifle
   m_EditorClassIdentifier: 
-  isAutomatic: 1
-  magazineCapacity: 0
-  bulletPerShot: 1
-  bulletSpread: 0
+  magazineCapacity: 30
+  bulletPerBurstShot: 3
+  bulletSpread: 0.1
+  bulletVelocity: 300
+  shootingDelay: 0.2
   shootingDistance: 1
+  isAutomatic: 1
+  isBurst: 1
+  isSingle: 1
